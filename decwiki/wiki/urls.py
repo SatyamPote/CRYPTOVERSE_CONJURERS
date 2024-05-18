@@ -1,8 +1,10 @@
-from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
+from . import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('wikiapp.urls')),
-    path('accounts/', include('django.contrib.auth.urls')),
+    path('', views.index, name='index'),
+    path('create/', views.create_content_view, name='create_content'),
+    path('content/<int:content_id>/', views.content_detail, name='content_detail'),
+    path('content/<int:content_id>/upvote/', views.upvote_content_view, name='upvote_content'),
+    path('content/<int:content_id>/downvote/', views.downvote_content_view, name='downvote_content'),
 ]
