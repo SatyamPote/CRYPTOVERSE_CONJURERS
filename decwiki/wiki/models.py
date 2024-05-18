@@ -8,8 +8,6 @@ class Article(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
 
-    def __str__(self):
-        return self.title
 
 class EditHistory(models.Model):
     article = models.ForeignKey(Article, on_delete=models.CASCADE)
