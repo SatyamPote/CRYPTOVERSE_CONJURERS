@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Content
 from services.blockchain import create_content, upvote_content, downvote_content
+from .ipfs_utils import save_to_ipfs
 
 def index(request):
     contents = Content.objects.all()

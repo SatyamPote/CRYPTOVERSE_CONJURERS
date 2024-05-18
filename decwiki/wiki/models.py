@@ -19,3 +19,15 @@ class EditHistory(models.Model):
 
     def __str__(self):
         return f"{self.article.title} edited by {self.edited_by.username} at {self.edited_at}"
+
+
+class Content(models.Model):
+    ipfs_hash = models.CharField(max_length=255)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    upvotes = models.PositiveIntegerField(default=0)
+    downvotes = models.PositiveIntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def _str_(self):
+        return self.ipfs_hash
